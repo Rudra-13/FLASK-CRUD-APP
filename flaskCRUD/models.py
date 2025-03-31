@@ -33,3 +33,8 @@ class StudentModel(db.Model):
                 f"Gender: {self.gender}, "
                 f"Hobbies: {self.hobbies}, "
                 f"Country: {self.country}"}"
+
+    # @staticmethod
+    # def email_exists(email):
+    #     # Check if the email already exists in the database
+    #    return db.session.query(StudentModel).filter_by(email=email).first() is not None
