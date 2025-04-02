@@ -17,8 +17,4 @@ PyMySQL==1.1.1
 pyodbc==5.2.0
 python-dateutil==2.9.0.post0
 pytz==2024.2
-six==1.17.0
-SQLAlchemy==2.0.36
-typing_extensions==4.12.2
-tzdata==2024.2
-Werkzeug==3.1.2
+
