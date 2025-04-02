@@ -25,14 +25,14 @@ class StudentModel(db.Model):
 
     def __repr__(self):
         # Return a more comprehensive string with all columns
-        return f"{f"ID: {self.id}, "
-                f"First Name: {self.first_name}, "
-                f"Last Name: {self.last_name}, "
-                f"Email: {self.email}, "
-                f"Password: {self.password}, "
-                f"Gender: {self.gender}, "
-                f"Hobbies: {self.hobbies}, "
-                f"Country: {self.country}"}"
+        return f"{"ID: {self.id}, "
+                "First Name: {self.first_name}, "
+                "Last Name: {self.last_name}, "
+                "Email: {self.email}, "
+                "Password: {self.password}, "
+                "Gender: {self.gender}, "
+                "Hobbies: {self.hobbies}, "
+                "Country: {self.country}"}"
 
     # @staticmethod
     # def email_exists(email):
