@@ -1,16 +1,32 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from models import StudentModel 
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+
+
 
 # Initialize Flask app and SQLAlchemy
 app = Flask(__name__)
 
 # MySQL Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:4321@localhost:3306/student'  
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:T5Y3BCHRAreDlVaFqX8OvAQcZcVuwbRE@dpg-cvmejo3e5dus73f2f8bg-a.oregon-postgres.render.com/student_nj09'
+print("Database connected successfully!")
+
   # Update this string with your credentials
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 # Initialize the database
 db = SQLAlchemy(app)
+
+
+def create_tables():
+    with app.app_context():
+        db.create_all()
+        print("Tables created successfully (if not existed before)!")
+        return "Tables created successfully (if not existed before)!"
 
 # Define StudentModel class to interact with the 'student' table
 class StudentModel(db.Model):
@@ -33,6 +49,7 @@ class StudentModel(db.Model):
         self.gender = gender
         self.hobbies = hobbies
         self.country = country
+    
 
     def __repr__(self):
         return f"<Student(id={self.id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email})>"
@@ -63,12 +80,15 @@ def create():
 
     return render_template('createpage.html')
 
-
 @app.route('/')
+
 def RetrieveList():
+    #create student table if not exists
+    create_tables()
     # Fetch all students from the database
     students = StudentModel.query.all()
     return render_template('datalist.html', students=students)
+
 
 
 @app.route('/<int:id>')
