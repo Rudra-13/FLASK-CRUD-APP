@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from models import StudentModel 
+from flaskCRUD.models import StudentModel
+
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -10,9 +11,9 @@ print("psycopg2 is installed successfully!")
 
 
 
-
+app = Flask(__name__, template_folder='flaskCRUD/templates')
 # Initialize Flask app and SQLAlchemy
-app = Flask(__name__)
+
 
 # MySQL Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:T5Y3BCHRAreDlVaFqX8OvAQcZcVuwbRE@dpg-cvmejo3e5dus73f2f8bg-a.oregon-postgres.render.com/student_nj09'
